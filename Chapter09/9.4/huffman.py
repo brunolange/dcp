@@ -108,16 +108,13 @@ Hac habitasse platea dictumst vestibulum rhoncus est pellentesque elit ullamcorp
 Cras semper auctor neque vitae tempus quam pellentesque nec.
     """
 
-    # db = "geeksforgeeks"
-
     frequencies = build_frequencies(db)
     tree = huffman_tree(frequencies)
     mapping = encoding(tree)
 
     _ = [print('[{:^3}]|{:<3}|{}'.format(char, frequencies[char], mapping[char])) for char in sorted(frequencies.keys())]
 
-    msg = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+    msg = 'Lorem ipsum dolor sit amet.'
     binary = encode(msg, mapping)
     decoded = decode(binary, tree)
-    # print('{} -> {} -> {}'.format(msg, binary, decoded))
     assert msg == decoded
